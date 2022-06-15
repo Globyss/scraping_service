@@ -7,7 +7,6 @@ def default_urls():
     return {'rabota': ''}
 
 
-
 class City(models.Model):
     name = models.CharField(max_length=50, verbose_name='Название населённого пункта',
                             unique=True)
@@ -65,6 +64,9 @@ class Vacancy(models.Model):
 class Error(models.Model):
     timestamp = models.DateField(auto_now_add=True)
     data = models.JSONField(default=None)
+
+    def __str__(self):
+        return str(self.timestamp)
 
     class Meta:
         verbose_name = 'Ошибка'

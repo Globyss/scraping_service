@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
-    {% for obj in object_list %}
-        <div class="card my-3">
-            <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
-            <div class="card-body">
-                <h5>{{ obj.company }}</h5>
-                <p class="card-text">{{ obj.description }}</p>
-                <p>{{ obj.city.name }} | {{ obj.language.name }} | <small>{{ obj.timestamp|date:'d-M-Y' }}</small></p>
-            </div>
-        </div>
-    {% empty %}
-        <h3 class="my-4 text-center">К сожалению, по Вашему запросу, ничего не найдено.</h3>
-    {% endfor %}
     {% if object_list %}
+        <h3 class="my-4 text-center">Результаты согласно Вашего запроса.</h3>
+        {% for obj in object_list %}
+            <div class="card my-3">
+                <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
+                <div class="card-body">
+                    <p class="card-text">{{ obj.description }}</p>
+                    <p><b>{{ obj.company }}</b></p>
+                    <p>{{ obj.city.name }} | {{ obj.language.name }} | <small>{{ obj.timestamp|date:'d-M-Y' }}</small></p>
+                </div>
+            </div>
+        {% endfor %}
         <div class="row">
             <div class="col">
                 <nav aria-label="Page navigation example">
@@ -41,6 +40,9 @@
                         {% endif %}
                   </ul>
                 </nav>
+    {% else %}
+        <h3 class="my-4 text-center">К сожалению, по Вашему запросу, ничего не найдено.</h3>
+
     {% endif %}
 
     <div class="row">
@@ -53,5 +55,5 @@
             </form>
         </div>
     </div>
-
+</div>
 {% endblock %}

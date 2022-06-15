@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Regiser{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+            <h4 class="my-2 text-center">Регистрация нового пользователя</h4>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-floating">
+                    {{ form.as_p }}
+                </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            </div>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}
